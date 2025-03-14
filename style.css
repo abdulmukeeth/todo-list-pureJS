@@ -1,0 +1,349 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    text-align: center;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Container Styles */
+.container {
+    max-width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Search Bar Styles */
+.search-container {
+    margin-bottom: 15px;
+}
+
+#searchInput {
+    width: 65%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Filter Tasks Styles */
+#filterTasks {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+#filterTasks:hover {
+    background: #f0f0f0;
+    border-color: #bbb;
+}
+
+#filterTasks:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Task Controls Styles */
+.task-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.task-controls button {
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task-controls button:hover {
+    background: #0056b3;
+}
+
+/* Task List Styles */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #f9f9f9;
+    padding: 12px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease;
+    overflow: hidden;
+}
+
+li span {
+    flex-grow: 1; /* Allow the text to take up available space */
+    overflow-wrap: break-word; /* Break long words onto the next line */
+    word-break: break-word; /* Ensure long words break properly */
+    white-space: normal; /* Allow text wrapping */
+}
+
+li .task-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.task-actions button {
+    min-width: 60px;
+    padding: 8px;
+}
+
+/* Completed Task Styles */
+li.completed span {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* Delete Button Styles */
+.delete-btn {
+    background: red;
+    transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: darkred;
+}
+
+/* Dragging Effects */
+li.dragging {
+    opacity: 0.5;
+}
+
+li.drag-over {
+    background: #d1ecf1;
+    border: 2px dashed #007bff;
+}
+
+/* Flash Message Styles */
+.flash-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: #000000;
+    opacity: 0;
+    transform: translateX(120%);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.flash-message.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.flash-message.success {
+    background-color: #dff0d8;
+    border: 1px solid #8bc34a;
+}
+
+.flash-message.error {
+    background-color: #f2dede;
+    border: 1px solid #a94442;
+}
+
+.flash-message.info {
+    background-color: #d9edf7;
+    border: 1px solid #17a2b8;
+}
+
+/* Delete Animation */
+.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Button Styles */
+button {
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px; /* Increased padding for spaciousness */
+    border-radius: 10px;
+    width: 400px; /* Adjusted width for better content display */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    background: #f0f0f0;
+    padding: 10px 20px; /* Adjusted padding for header */
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-body {
+    padding: 30px 20px; /* Increased padding for body */
+    flex-grow: 1; /* Ensure body takes up available space */
+}
+
+.modal-actions {
+    padding: 20px; /* Increased padding for actions */
+    background: #f0f0f0;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close {
+    font-size: 24px; /* Increased font size for close button */
+    cursor: pointer;
+    margin-right: -10px; /* Adjusted margin for alignment */
+    margin-top: -5px; /* Adjusted margin for alignment */
+}
+
+/* Save Button Style in Modal */
+#saveTask {
+    background-color: #68b46a; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Adjust padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+}
+
+#saveTask:hover {
+    background-color: #3e8e41; /* Darker green on hover */
+}
+
+/* Confirmation Modal Buttons */
+#confirmDeleteBtn {
+    background: #f44336;
+    color: white;
+}
+
+#cancelDeleteBtn {
+    background: #607D8B;
+    color: white;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background: #222;
+    color: white;
+}
+
+.dark-mode .container {
+    background: #333;
+    color: white;
+}
+
+.dark-mode li {
+    background: #444;
+    color: white;
+}
+
+.dark-mode li.completed span {
+    color: #bbb;
+}
+
+.dark-mode .modal-content {
+    background: #333;
+    color: white;
+}
+
+.dark-mode .modal-header {
+    background: #444;
+    color: white;
+}
+
+.dark-mode .modal-body {
+    color: white;
+}
+
+.dark-mode .modal-actions {
+    background: #444;
+    color: white;
+}
+
+.dark-mode .modal-actions button {
+    background: #555;
+    color: white;
+}
+
+.dark-mode .modal-actions button:hover {
+    background: #666;
+}
+
+.dark-mode #confirmDeleteBtn {
+    background: #a00;
+    color: white;
+}
+
+.dark-mode #cancelDeleteBtn {
+    background: #777;
+    color: white;
+}
+
+.dark-mode #confirmDeleteBtn:hover {
+    background: #c00;
+}
+
+.dark-mode #cancelDeleteBtn:hover {
+    background: #888;
+}
+
+.dark-mode #saveTask {
+    background-color: #2fc96f; /* Lighter green in dark mode */
+}
+
+.dark-mode #saveTask:hover {
+    background-color: #1abc9c; /* Even lighter green on hover in dark mode */
+}
